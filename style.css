@@ -1,0 +1,192 @@
+:root {
+  --bg: #05070a;
+  --btn-bg: #0e1319;
+  --btn-text: #e8eef5;
+  --btn-accent: #5fd4e6;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+#scene,
+#sceneFade,
+#finalVideo {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#sceneFade {
+  opacity: 0;
+}
+
+#sceneFade.show {
+  opacity: 1;
+  transition: opacity 0.25s ease-in;
+}
+
+#finalVideo {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#finalVideo.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* wall toggle switch plate */
+#powerBtn {
+  position: fixed;
+  right: 14vw;
+  top: 25vh;
+  z-index: 10;
+  width: 80px;
+  height: 148px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #eceeee, #c6c9ca);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.18),
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    0 10px 18px rgba(0, 0, 0, 0.5);
+  filter: brightness(0.5); 
+  cursor: pointer;
+  transition: filter 0.4s ease;
+}
+
+#powerBtn:hover:not(:disabled) {
+  filter: brightness(0.62);
+}
+
+#powerBtn[aria-checked="true"] {
+  filter: brightness(1);
+}
+
+#powerBtn:focus-visible {
+  outline: 3px solid var(--btn-accent);
+  outline-offset: 4px;
+}
+
+#powerBtn:disabled {
+  cursor: progress;
+}
+
+.screw {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6f7f7, #aeb2b4);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.screw::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 50%;
+  height: 1.5px;
+  margin-top: -0.75px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.screw-top::after {
+  transform: rotate(35deg);
+}
+
+.screw-bottom::after {
+  transform: rotate(-20deg);
+}
+
+.led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2b3238;
+  box-shadow:
+    inset 0 1px 1px rgba(0, 0, 0, 0.7),
+    0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#powerBtn[aria-checked="true"] .led {
+  background: var(--btn-accent);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.5),
+    0 0 5px rgba(95, 212, 230, 0.8),
+    0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.label {
+  font: 600 9px/1 system-ui, sans-serif;
+  letter-spacing: 0.14em;
+  color: #9a9fa3;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+}
+
+#powerBtn[aria-checked="true"] .label-on,
+#powerBtn[aria-checked="false"] .label-off {
+  color: #14181c;
+}
+
+.slot {
+  position: relative;
+  width: 26px;
+  height: 68px;
+  border-radius: 13px;
+  background: #121518;
+  box-shadow:
+    inset 0 3px 5px rgba(0, 0, 0, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.lever {
+  position: absolute;
+  left: 50%;
+  top: 3px;
+  width: 16px;
+  height: 36px;
+  margin-left: -8px;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    #80878a,
+    #eceeef 35%,
+    #c3c7c9 62%,
+    #70777a
+  );
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.65);
+  transform: translateY(26px); 
+  transition: transform 0.14s ease-out;
+}
+
+#powerBtn[aria-checked="true"] .lever {
+  transform: translateY(0); 
+}

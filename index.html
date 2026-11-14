@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLARK Setup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <img id="scene" src="assets/frame-00.jpg" alt="Dark gaming room with a CLARK neon sign">
+<img id="sceneFade" src="assets/frame-00.jpg" alt="" aria-hidden="true">
+
+  <video id="finalVideo" src="assets/final.mp4" muted loop playsinline preload="auto"></video>
+
+  <button id="powerBtn" type="button" role="switch" aria-checked="false" aria-label="Room power">
+  <span class="screw screw-top"></span>
+  <span class="led"></span>
+  <span class="label label-on" aria-hidden="true">ON</span>
+  <span class="slot">
+    <span class="lever"></span>
+  </span>
+  <span class="label label-off" aria-hidden="true">OFF</span>
+  <span class="screw screw-bottom"></span>
+</button>
+
+  <audio id="clickSound" src="assets/click.mp3"></audio>
+  <audio id="music" src="assets/music.mp3" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
