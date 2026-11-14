@@ -55,7 +55,7 @@ function turnOn() {
   setTimeout(() => {
     video.classList.add("show");
     video.currentTime = 0;
-    video.play().catch(() => {});
+    video.play().catch((err) => console.error("Video error:", err));
     powerBtn.disabled = false;
     isOn = true;
   }, time);
